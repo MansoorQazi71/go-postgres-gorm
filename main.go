@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"github.com/dev_mansoor/go-postgres-gorm/controllers"
 	"github.com/dev_mansoor/go-postgres-gorm/initializers"
+	"github.com/dev_mansoor/go-postgres-gorm/routes"
 	"github.com/gin-gonic/gin"
 )
 
@@ -15,12 +15,13 @@ func init() {
 
 func main() {
 	fmt.Println("Hello, World! 123")
+	// middleware.Text()
 
-	router := gin.Default()
-	router.POST("/posts", controllers.CreatePost)
-	router.GET("/posts", controllers.PostIndex)
-	router.GET("/posts/:id", controllers.PostShow)
-	router.PUT("/posts/:id", controllers.PostUpdate)
-	router.DELETE("/posts/:id", controllers.PostDelete)
+	router := gin.New()
+	router.Use(gin.Logger())
+
+	routes.PostRouter(router)
+	routes.Authenticate(router)
+
 	router.Run()
 }
