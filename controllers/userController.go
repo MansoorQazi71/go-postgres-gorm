@@ -167,10 +167,7 @@ func Login(c *gin.Context) {
 		return
 	}
 
-	c.SetSameSite(http.SameSiteLaxMode)
-	c.SetCookie("token", tokenString, 3600*24*30, "", "", false, true) // 30 days expiry
-
-	// Success response
+	// ✅ Only return token in JSON (no cookies)
 	c.JSON(http.StatusOK, gin.H{
 		"message": "Login successful",
 		// "user": gin.H{
