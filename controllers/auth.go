@@ -32,7 +32,7 @@ type LoginInput struct {
 	Password string `json:"password" binding:"required"`
 }
 
-func Login(c *gin.Context) {
+func LoginUser(c *gin.Context) {
 
 	var input LoginInput
 
@@ -62,7 +62,7 @@ type RegisterInput struct {
 	Password string `json:"password" binding:"required"`
 }
 
-func Register(c *gin.Context) {
+func RegisterUser(c *gin.Context) {
 
 	var input RegisterInput
 
