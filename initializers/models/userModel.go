@@ -28,7 +28,7 @@ func GetUserByID(uid uint) (User, error) {
 	var u User
 
 	if err := initializers.DB.First(&u, uid).Error; err != nil {
-		return u, errors.New("User not found!")
+		return u, errors.New("User not found")
 	}
 
 	u.PrepareGive()
